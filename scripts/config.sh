@@ -1,0 +1,2 @@
+HOME_PATH="~/"
+ZSH_PROFILE=".zshrc"

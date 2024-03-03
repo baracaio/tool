@@ -1,19 +1,34 @@
 #!/bin/bash
 
-# Check if exactly two arguments are given
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 alias_name 'command_to_execute'"
-    exit 1
-fi
+add_alias() {
+    # Check if at least two arguments are given
+    if [ "$#" -lt 2 ]; then
+        echo "Usage: $0 alias_name command_to_execute"
+        echo "Example: $0 dev cd ~/dev"
+        exit 1
+    fi
 
-# Extract parameters
-alias_name=$1
-command_to_execute=$2
+    # Extract the alias name
+    local alias_name=$1
+    local command_to_execute=$2
 
-# Define the file path
-alias_file="alias.zsh"
+    echo command_to_execute
 
-# Append the alias to the file
-echo "alias $alias_name='$command_to_execute'" >> "$alias_file"
+    command_to_execute=$(echo "$command_to_execute" | envsubst)
 
-echo "Alias added: $alias_name"
+    # Get the full path of the directory where the script is located
+    script_dir=$(dirname "$(realpath "$0")")
+
+    # Define the full path to the alias file, one level up in a folder named 'zsh'
+    alias_file="$script_dir/../zsh/alias.zsh"
+
+    # Check if the alias file exists, if not, create it
+    if [ ! -f "$alias_file" ]; then
+        touch "$alias_file"
+    fi
+
+    # Append the alias to the file without double quoting the command
+    echo "alias $alias_name='$command_to_execute'" >> "$alias_file"
+
+    echo "Alias added to $alias_file: $alias_name"    
+}
