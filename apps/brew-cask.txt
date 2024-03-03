@@ -1,0 +1,8 @@
+iterm2
+raycast
+rectangle
+alt-tab
+keepingyouawake
+slack
+kap
+visual-studio-code

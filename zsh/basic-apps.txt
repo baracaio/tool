@@ -1,0 +1,6 @@
+sublime-text
+Iterm2
+ffmpeg
+imagemagick
+wget
+telnet
