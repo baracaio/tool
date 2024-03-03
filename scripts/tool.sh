@@ -1,12 +1,8 @@
 source ./config.sh
 source ./alias.sh
+source ./setup.sh
 
 main() {
-   if [ "$#" -lt 2 ]; then
-        echo "Usage: $0 command args..."
-        exit 1
-    fi
-
     local command=$1
     shift
 
@@ -21,6 +17,9 @@ main() {
             fi
             echo "before: Alias name is '$1', command is '$2'"
             add_alias "$1" "$2"
+            ;;
+        setup)
+            setup
             ;;
         *)
             echo "Unknown command: $command"
