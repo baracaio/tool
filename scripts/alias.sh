@@ -12,9 +12,14 @@ add_alias() {
     local alias_name=$1
     local command_to_execute=$2
 
-    echo command_to_execute
+    # Debug: Print the command before substitution
+    echo "Before substitution: $command_to_execute"
 
+    # Perform the substitution
     command_to_execute=$(echo "$command_to_execute" | envsubst)
+
+    # Debug: Print the command after substitution
+    echo "After substitution: $command_to_execute"
 
     # Get the full path of the directory where the script is located
     script_dir=$(dirname "$(realpath "$0")")
