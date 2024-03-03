@@ -1,2 +1,2 @@
-HOME_PATH="~/"
-ZSH_PROFILE=".zshrc"
+export HOME_PATH="~/"
+export ZSH_PROFILE=".zshrc"

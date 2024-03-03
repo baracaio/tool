@@ -2,4 +2,3 @@ ffmpeg
 imagemagick
 wget
 telnet
-gettext
